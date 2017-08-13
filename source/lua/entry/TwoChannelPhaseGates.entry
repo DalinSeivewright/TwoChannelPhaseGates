@@ -1,0 +1,4 @@
+modEntry = {
+	FileHooks = "lua/TwoChannelPhaseGates/tcpg_Filehooks.lua",
+	Priority = 35
+}
