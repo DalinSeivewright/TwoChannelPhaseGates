@@ -38,13 +38,3 @@ function BuildTechData()
 
     return techData
 end
-
--- local ns2_LookupTechId = LookupTechId
--- function LookupTechId(fieldData, fieldName)
---     return ns2_LookupTechId(fieldData, fieldName)
--- end
---
--- local ns2_LookupTechData = LookupTechData
--- function LookupTechData(techId, fieldName, default)
---     return ns2_LookupTechData(techId, fieldName, default)
--- end

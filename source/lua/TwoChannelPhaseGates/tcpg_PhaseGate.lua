@@ -22,9 +22,7 @@ local function ComputeDestinationLocationId(self, destGate)
         end
 
     end
-
     return destLocationId
-
 end
 
 -- Mostly from the original NS2 PhaseGate.lua source.
@@ -164,39 +162,23 @@ function PhaseGate:PerformActivation(techId, position, normal, commander)
         return true, true
     -- This will unfortunately disable Recycle if we don't specifically
     -- allow its activation here
-    elseif techId == kTechId.Recycle then
-        return true, true
     end
-
-    return false, true
-
+    return ScriptActor.PerformActivation(self, techId, position, normal, commander)
 end
 
 -- Enables/Disables our Channel Buttons.
 -- If we're already on Phase Channel A for example we don't want the commander
 -- Pressing it again and vice versa.
 function PhaseGate:GetTechAllowed(techId, techNode, player)
-    if self.phaseChannel == 0 and techId == kTechId.PhaseChannelB then
-        return true, true
-    elseif self.phaseChannel == 1 and techId == kTechId.PhaseChannelA then
-        return true, true
-    elseif techId == kTechId.Recycle then
-        return true, true
+    if techId == kTechId.PhaseChannelA or techId == kTechId.PhaseChannelB then
+        if self.phaseChannel == 0 and techId == kTechId.PhaseChannelB then
+            return true, true
+        elseif self.phaseChannel == 1 and techId == kTechId.PhaseChannelA then
+            return true, true
+        end
+        return false, true
     end
-    return false, true
-end
-
--- Checks to see if we can activate a tech button
-function PhaseGate:GetActivationTechAllowed(techId)
-    if techId == kTechId.PhaseChannelA then
-        return self.phaseChannel == 0
-    elseif techId == kTechId.PhaseChannelB then
-        return self.phaseChannel == 1
-    elseif techId == kTechId.Recycle then
-        return true
-    end
-    return false
-
+    return ScriptActor.GetTechAllowed(self, techId, techNode, player)
 end
 
 Shared.LinkClassToMap("PhaseGate", PhaseGate.kMapName, networkVarsOverride)

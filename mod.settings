@@ -1,7 +1,12 @@
 name        = "TwoChannelPhaseGates"
-source_dir  = "source/"
-output_dir  = "output/"
-description = [=[]=]
+source_dir  = "source"
+output_dir  = "output"
+description = [=[Enables two Phate Gate channels that can be toggled on a Per-Phase Gate basis.
+
+This adds the ability for the Marines to have two different Phase Gate networks simultaneously.  For example, the Commander can drop two phase gates at Marine Start and have both go through a completely different set of phase gate locations.
+
+Commanders need to simply select the Phase Gates they want in the secondary network and hit the appropriate button in the Commander UI.]=]
 image       = "preview.jpg"
-tag_modtype = ""
-tag_support = ""
+tag_modtype = "Gameplay Tweak"
+tag_support = "Must be run on Server"
+publish_id = "4227ec52"
